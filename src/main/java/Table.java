@@ -8,9 +8,9 @@ public class Table implements Runnable{
         thread = new Thread(this);
     }
     public void run(){
-        meal();
+        lunch();
     }
-    private void meal(){
+    private void lunch(){
         for(Thinker thinker: thinkers){
             thinker.thread.start();
         }

@@ -1,26 +1,19 @@
 public class Fork {
-    boolean state = false;
-    synchronized void get(){
-        while (!state){
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("взял вилку");
-            state = false;
-            notify();
-        }
+    volatile boolean state = false;
+    synchronized void get(String msg){
+        System.out.println(msg+"взял вилку");
+        setState(true);
     }
-    synchronized void put(){
-        while (state){
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            state = true;
-            System.out.println("положил вилку");
-        }
+    public void put(String msg){
+        setState(false);
+        System.out.println(msg+"положил вилку");
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 }
