@@ -1,7 +1,7 @@
 public class Pair {
     private Fork forkRight;
     private Fork forkLeft;
-    private boolean state;
+    volatile private boolean state;
     Thinker thinker;
 
 

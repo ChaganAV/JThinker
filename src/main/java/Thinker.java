@@ -23,15 +23,17 @@ public class Thinker implements Runnable{
         random = new Random();
     }
     public void run(){
-        System.out.println(getName() + " думаю...");
-        try {
-            Thread.sleep(random.nextInt(2,5)*1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        for(int i = 0; i < 3; i++) {
+            System.out.println(getName() + " думаю...");
+            try {
+                Thread.sleep(random.nextInt(2, 5) * 1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            pair.getForks();
+            System.out.println(getName() + " кушаю...");
+            pair.putForks();
         }
-        pair.getForks();
-        System.out.println(getName() + " кушаю...");
-        pair.putForks();
     }
     public void run2(){
         for (int i = 0; i < 3; i++) {
