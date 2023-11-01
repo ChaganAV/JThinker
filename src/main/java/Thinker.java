@@ -15,6 +15,12 @@ public class Thinker implements Runnable{
         this.thread = new Thread(this);
         random = new Random();
     }
+
+    /**
+     * Мыслитель, получает имя и столовые приборы
+     * @param name имя мыслителя
+     * @param pair столовые приборы
+     */
     public Thinker(String name, Pair pair){
         this.name = name;
         this.pair = pair;
@@ -22,6 +28,10 @@ public class Thinker implements Runnable{
         pair.setThinker(this);
         random = new Random();
     }
+
+    /**
+     * метод выполнения в потоке
+     */
     public void run(){
         for(int i = 0; i < 3; i++) {
             System.out.println(getName() + " думаю...");
